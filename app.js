@@ -8,27 +8,13 @@ client.on('ready', () => {
     // We can post into the console that the bot launched.
     console.log('Bot started.');
 
-    // let scheduledMessage = new cron.CronJob('00 22 14 * * *', () => {
-    //     // This runs every day at 10:30:00, you can do anything you want
-    //     // let channel = yourGuild.channels.get('id');
-    //     // channel.send('You message');
-
-    //     client.channels.get('565797324089982986').send('Positive Vibe:');
-    //     client.channels.get('565797324089982986').send(textArray[randomNumber])
-    // });
-    // scheduledMessage.start()
 
 
-    var interval = setInterval(function () {
-        var randomNumber = Math.floor(Math.random() * textArray.length);
-        client.channels.get('476526110046420994').send('Positive Vibe:');
-        client.channels.get('476526110046420994').send(textArray[randomNumber])
-    }, 10000 * 60 * 60);
 
 });
 
 client.on('guildMemberAdd', (guildMember) => {
-    guildMember.addRole(guildMember.guild.roles.find(role => role.name === "Smiley"));
+    guildMember.roles.add(guildMember.guild.roles.find(role => role.name === "Smiley"));
 });
 
 client.on('guildMemberAdd', member => {
@@ -137,7 +123,7 @@ client.on("message", message => {
         let guild = client.guilds.cache.get('476526110046420992'), // returns a Guild or undefined
             channel;
         let membersWithRole = client.guilds.cache.get('476526110046420992').members.filter(member => {
-            return member.roles.find("name", roleName);
+            return member.roles.cache.find(("name", roleName);
         }).map(member => {
             return member.displayName;
         })
